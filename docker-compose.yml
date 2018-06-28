@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ENV=docker
+    ports:
+      - 2224:2224
